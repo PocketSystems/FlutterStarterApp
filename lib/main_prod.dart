@@ -8,7 +8,7 @@ void main() {
   var configuredApp = AppConfig(
     appTitle: Constants.appTitle,
     buildFlavor: "Production",
-    baseUrl: '',
+    baseUrl: '', // url for production app
     child: App(),
   );
   return runApp(configuredApp);
