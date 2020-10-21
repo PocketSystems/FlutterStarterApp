@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_starter_app/src/configs/app_config.dart';
-import 'package:flutter_starter_app/src/screens/splash/Splash.dart';
+import 'package:flutter_starter_app/src/screens/splash/splash.dart';
 
 class App extends StatelessWidget {
   // This widget is the root of your application.
