@@ -5,4 +5,8 @@ import 'package:stacked_services/stacked_services.dart';
 abstract class Services {
   @lazySingleton
   NavigationService get navigationService;
+  @lazySingleton
+  DialogService get dialogService;
+  @lazySingleton
+  SnackbarService get snackbarService;
 }
