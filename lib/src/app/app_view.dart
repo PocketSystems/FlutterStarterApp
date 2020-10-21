@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_starter_app/src/configs/app_config.dart';
-import 'package:flutter_starter_app/src/screens/splash/splash_view.dart';
+import 'package:flutter_starter_app/src/configs/router.gr.dart' as router;
+import 'package:flutter_starter_app/src/views/splash/splash_view.dart';
 
 class AppView extends StatelessWidget {
   // This widget is the root of your application.
@@ -11,6 +12,8 @@ class AppView extends StatelessWidget {
     return MaterialApp(
       title: AppConfig.of(context).appTitle,
       debugShowCheckedModeBanner: false,
+      initialRoute: router.Routes.splashView,
+      onGenerateRoute: router.Router().onGenerateRoute,
       home: SplashView(),
       builder: (context, child) {
         return Stack(
