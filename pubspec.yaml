@@ -27,6 +27,12 @@ dependencies:
   cupertino_icons: ^0.1.3
   stacked: ^1.7.6
   stacked_services: ^0.5.4+4
+  # git repo url added just because of the library now broken on flutter 1.22, 
+  # later this should be removed when resolved.
+  flutter_stetho:  
+    git:
+      url: git://github.com/jasonlewicki/flutter_stetho.git
+      ref: master
 
 #dev_dependencies:
 # For information on the generic Dart part of this file, see the

@@ -55,6 +55,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_stetho:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: master
+      resolved-ref: "08ce9fd760ce5ab4a41e162d59e1c422bc5eda74"
+      url: "git://github.com/jasonlewicki/flutter_stetho.git"
+    source: git
+    version: "0.5.2"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
