@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_starter_app/src/configs/app_config.dart';
-import 'package:flutter_starter_app/src/widgets/loading_indicator.dart';
+import 'package:flutter_starter_app/src/services/local/navigation_service.dart';
 
 class SplashView extends StatelessWidget {
   @override
@@ -16,9 +16,8 @@ class SplashView extends StatelessWidget {
             SizedBox(
               height: 16.0,
             ),
-            LoadingIndicator(
-              color: Colors.black,
-            ),
+            ElevatedButton(
+                onPressed: () => NavService.home(), child: Text('Go to Home'))
           ],
         ),
       ),
