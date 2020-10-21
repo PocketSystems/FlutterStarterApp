@@ -8,10 +8,8 @@ extension UIExt on BuildContext {
   ThemeData appTheme() => Theme.of(this);
   TextTheme textTheme() => Theme.of(this).textTheme;
 
-  void closeKeyboardIfOpen(BuildContext context) {
-    FocusScopeNode currentFocus = FocusScope.of(context);
-    if (!currentFocus.hasPrimaryFocus) {
-      currentFocus.unfocus();
-    }
+  void closeKeyboardIfOpen() {
+    FocusScopeNode currentFocus = FocusScope.of(this);
+    if (!currentFocus.hasPrimaryFocus) currentFocus.unfocus();
   }
 }
