@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_starter_app/src/configs/app_config.dart';
 import 'package:flutter_starter_app/src/widgets/loading_indicator.dart';
 
-class Splash extends StatelessWidget {
+class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
