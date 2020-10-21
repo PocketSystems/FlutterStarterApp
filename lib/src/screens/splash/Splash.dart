@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_starter_app/app/widgets/LoadingIndicator.dart';
-import 'package:flutter_starter_app/resources/app_config.dart';
+import 'package:flutter_starter_app/src/configs/app_config.dart';
+import 'package:flutter_starter_app/src/widgets/LoadingIndicator.dart';
 
 class Splash extends StatelessWidget {
   @override
