@@ -32,10 +32,14 @@ dependencies:
   cupertino_icons: ^0.1.3
   stacked: ^1.7.6
   stacked_services: ^0.5.4+4
+  get_it: ^5.0.1
+  injectable: ^1.0.5
+  observable_ish: ^2.1.4
 
 dev_dependencies:
   auto_route_generator: ^0.6.10
   build_runner: null
+  injectable_generator: ^1.0.6
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

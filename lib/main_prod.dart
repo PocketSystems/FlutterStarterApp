@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_starter_app/src/app/app_view.dart';
 import 'package:flutter_starter_app/src/base/utils/constants.dart';
 import 'package:flutter_starter_app/src/configs/app_config.dart';
+import 'package:flutter_starter_app/src/configs/locator.dart';
 
 void main() {
+  setupLocator();
   var configuredApp = AppConfig(
     appTitle: Constants.appTitle,
     buildFlavor: "Production",
