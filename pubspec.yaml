@@ -23,10 +23,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_stetho:
-    git:
-      url: git://github.com/jasonlewicki/flutter_stetho.git
-      ref: master
   auto_route: ^0.6.9
   connectivity: ^0.4.9
   cupertino_icons: ^0.1.3
