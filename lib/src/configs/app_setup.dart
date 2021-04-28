@@ -17,6 +17,6 @@ import 'package:stacked_services/stacked_services.dart';
     LazySingleton(classType: AuthService),
   ],
 )
-class App {
+class AppSetup {
   /** This class has no puporse besides housing the annotation that generates the required functionality **/
 }

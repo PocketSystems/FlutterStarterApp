@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_starter_app/src/base/utils/Constants.dart';
-import 'package:flutter_starter_app/src/configs/router.router.dart';
 import 'package:flutter_starter_app/src/services/local/navigation_service.dart';
 import 'package:flutter_starter_app/src/views/splash/splash_view.dart';
 
@@ -13,7 +12,7 @@ class AppView extends StatelessWidget {
     return MaterialApp(
       title: Constants.appTitle,
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: StackedRouter().onGenerateRoute,
+      onGenerateRoute: NavService.onGenerateRoute,
       navigatorKey: NavService.key,
       home: SplashView(),
       builder: (context, child) {
