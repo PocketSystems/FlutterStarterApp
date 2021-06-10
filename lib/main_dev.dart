@@ -7,13 +7,14 @@ import 'package:package_info/package_info.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   // getting package
   final package = await PackageInfo.fromPlatform();
 
-  // app flavor init
-  AppFlavor.init(package);
-
   setupLocator();
+
+  // app flavor init
+  FlavorService.init(package);
 
   runApp(AppView());
 }

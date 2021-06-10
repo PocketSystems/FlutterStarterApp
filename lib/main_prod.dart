@@ -11,10 +11,10 @@ void main() async {
   // getting package
   final package = await PackageInfo.fromPlatform();
 
-  // app flavor init
-  AppFlavor.init(package);
-
   setupLocator();
+
+  // app flavor init
+  FlavorService.init(package);
 
   runApp(AppView());
 }

@@ -5,7 +5,7 @@ enum Env {
   dev,
 }
 
-class AppFlavor {
+class FlavorService {
   static Env env;
 
   static init(PackageInfo info) {
