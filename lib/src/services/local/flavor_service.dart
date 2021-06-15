@@ -6,7 +6,7 @@ enum Env {
 }
 
 class FlavorService {
-  static Env env;
+  static Env? env;
 
   static init(PackageInfo info) {
     final flavor = info.packageName.split(".").last;

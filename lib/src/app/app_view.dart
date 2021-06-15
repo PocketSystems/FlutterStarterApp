@@ -17,7 +17,7 @@ class AppView extends StatelessWidget {
       home: SplashView(),
       builder: (context, child) {
         return Stack(
-          children: [child],
+          children: [child!],
         );
       },
     );

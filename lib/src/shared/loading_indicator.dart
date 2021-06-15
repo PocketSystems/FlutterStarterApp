@@ -6,7 +6,7 @@ class LoadingIndicator extends StatelessWidget {
   final Color color;
 
   const LoadingIndicator(
-      {Key key,
+      {Key? key,
       this.size = 30,
       this.strokeWidth = 3,
       this.color = Colors.black})
