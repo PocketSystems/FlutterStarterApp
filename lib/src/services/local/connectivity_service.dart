@@ -10,6 +10,7 @@ class ConnectivityService with ReactiveServiceMixin {
     listenToReactiveValues([_isInternetConnected]);
     Connectivity().onConnectivityChanged.listen((result) {
       _isInternetConnected.value = result != ConnectivityResult.none;
+      notifyListeners();
     });
   }
 }
