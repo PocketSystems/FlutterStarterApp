@@ -31,7 +31,7 @@ dependencies:
   observable_ish: ^3.0.0
   package_info: ^2.0.2
   dio: ^4.0.0
-  keyboard_visibility: ^0.5.6
+  flutter_keyboard_visibility: ^5.0.2
 
 dev_dependencies:
   build_runner: ^2.0.4

@@ -1,5 +1,4 @@
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:keyboard_visibility/keyboard_visibility.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:observable_ish/observable_ish.dart';
 import 'package:stacked/stacked.dart';
 
@@ -9,10 +8,8 @@ class KeyboardService with ReactiveServiceMixin {
 
   KeyboardService() {
     listenToReactiveValues([_isKeyboardVisible]);
-    KeyboardVisibilityNotification().addNewListener(
-      onChange: (bool visible) {
-        _isKeyboardVisible.value = visible;
-      },
-    );
+    KeyboardVisibilityController().onChange.listen((bool visible) {
+      _isKeyboardVisible.value = visible;
+    });
   }
 }
