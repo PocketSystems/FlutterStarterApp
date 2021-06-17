@@ -27,6 +27,22 @@ class ApiClient {
     }
   }
 
+  ResponseWrapper _response(Response? response) {
+    return ResponseWrapper(
+      data: response?.data?['data'] ?? response?.data,
+      message: response?.data?['message'] ?? response?.statusMessage,
+      statusCode: response?.statusCode,
+    );
+  }
+
+  ErrorWrapper _error(DioError? error) {
+    return ErrorWrapper(
+      error: error?.error,
+      message: error?.message,
+      statusCode: error?.response?.statusCode,
+    );
+  }
+
   Future<ResponseWrapper> get(
     String uri, {
     Map<String, dynamic>? params,
@@ -42,16 +58,9 @@ class ApiClient {
         cancelToken: cancelToken,
         onReceiveProgress: onReceiveProgress,
       );
-      return ResponseWrapper(
-        data: response?.data['data'],
-        message: response?.data['message'],
-        status: response?.data['status'],
-      );
+      return _response(response);
     } on DioError catch (e) {
-      return ErrorWrapper(
-        error: e.error,
-        message: e.message,
-      );
+      return _error(e);
     }
   }
 
@@ -72,16 +81,9 @@ class ApiClient {
           cancelToken: cancelToken,
           onReceiveProgress: onReceiveProgress,
           onSendProgress: onSendProgress);
-      return ResponseWrapper(
-        data: response?.data['data'],
-        message: response?.data['message'],
-        status: response?.data['status'],
-      );
+      return _response(response);
     } on DioError catch (e) {
-      return ErrorWrapper(
-        error: e.error,
-        message: e.message,
-      );
+      return _error(e);
     }
   }
 }
