@@ -17,7 +17,7 @@ class ApiClient {
     customHeaders['Content-Type'] = 'application/json';
     customHeaders['Accept'] = 'application/json';
     _dio!
-      ..options.baseUrl = FlavorService.getBaseApi()
+      ..options.baseUrl = FlavorService.getBaseApi
       ..options.connectTimeout = _defaultConnectTimeout
       ..options.receiveTimeout = _defaultReceiveTimeout
       ..httpClientAdapter

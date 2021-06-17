@@ -1,3 +1,5 @@
-abstract class Constants {
-  static final String appTitle = "Flutter Starter App";
+class Constants {
+  Constants._();
+
+  static String get appTitle => "Flutter Starter App";
 }

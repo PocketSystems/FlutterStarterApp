@@ -6,6 +6,8 @@ enum Env {
 }
 
 class FlavorService {
+  FlavorService._();
+
   static Env? env;
 
   static init(PackageInfo info) {
@@ -17,7 +19,7 @@ class FlavorService {
     }
   }
 
-  static String getBaseApi() {
+  static String get getBaseApi {
     // return prod url
     if (env == Env.prod) {
       return "";
