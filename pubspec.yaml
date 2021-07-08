@@ -1,5 +1,5 @@
 name: flutter_starter_app
-description: A new Flutter project.
+description: Flutter starter app
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -18,28 +18,24 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_stetho:
-    git:
-      url: git://github.com/jasonlewicki/flutter_stetho.git
-      ref: master
-  auto_route: ^0.6.9
-  connectivity: ^0.4.9
-  cupertino_icons: ^0.1.3
-  stacked: ^1.7.6
-  stacked_services: ^0.5.4+4
-  get_it: ^5.0.1
-  injectable: ^1.0.5
-  observable_ish: ^2.1.4
+  connectivity: ^3.0.6
+  cupertino_icons: ^1.0.3
+  stacked: ^2.1.8
+  stacked_services: ^0.8.7
+  get_it: ^7.1.4
+  observable_ish: ^3.0.0
+  package_info: ^2.0.2
+  dio: ^4.0.0
+  flutter_keyboard_visibility: ^5.0.2
 
 dev_dependencies:
-  auto_route_generator: ^0.6.10
-  build_runner: null
-  injectable_generator: ^1.0.6
+  build_runner: ^2.0.4
+  stacked_generator: ^0.4.6
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

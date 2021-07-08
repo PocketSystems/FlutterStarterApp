@@ -3,14 +3,14 @@ import 'package:observable_ish/observable_ish.dart';
 import 'package:stacked/stacked.dart';
 
 class AuthService with ReactiveServiceMixin {
-  RxValue<User> _user = RxValue<User>();
-  User get user => _user.value;
+  RxValue<User?> _user = RxValue<User?>(null);
+  User? get user => _user.value;
 
   AuthService() {
     listenToReactiveValues([_user]);
   }
 
-  set user(User user) {
+  set user(User? user) {
     _user.value = user;
   }
 }

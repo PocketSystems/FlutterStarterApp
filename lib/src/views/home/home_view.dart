@@ -8,9 +8,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.nonReactive(
       builder: (context, model, child) => Scaffold(
-        appBar: AppBar(
-          title: Text('Home'),
-        ),
+        body: Center(child: Text('Home')),
       ),
       viewModelBuilder: () => HomeViewModel(),
     );

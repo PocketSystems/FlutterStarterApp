@@ -1,1 +1,3 @@
-abstract class AppColors {}
+class AppColors {
+  AppColors._();
+}
