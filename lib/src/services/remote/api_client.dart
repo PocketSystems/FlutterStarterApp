@@ -1,5 +1,6 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
-import 'package:flutter_starter_app/src/models/wrappers/error_wrapper.dart';
 import 'package:flutter_starter_app/src/models/wrappers/response_wrapper.dart';
 import 'package:flutter_starter_app/src/services/local/flavor_service.dart';
 
@@ -35,38 +36,34 @@ class ApiClient {
     );
   }
 
-  ErrorWrapper _error(DioError? error) {
-    return ErrorWrapper(
-      error: error?.error,
-      message: error?.message,
-      statusCode: error?.response?.statusCode,
-    );
-  }
-
-  Future<ResponseWrapper> get(
+  Future<ResponseWrapper<dynamic>> getReq(
     String uri, {
-    Map<String, dynamic>? params,
+    Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
     ProgressCallback? onReceiveProgress,
   }) async {
     try {
-      final response = await _dio?.get(
+      var response = await _dio?.get(
         uri,
-        queryParameters: params,
+        queryParameters: queryParameters,
         options: options,
         cancelToken: cancelToken,
         onReceiveProgress: onReceiveProgress,
       );
       return _response(response);
-    } on DioError catch (e) {
-      return _error(e);
+    } on SocketException catch (e) {
+      throw SocketException(e.toString());
+    } on FormatException catch (_) {
+      throw FormatException("Unable to process the data");
+    } catch (e) {
+      throw e;
     }
   }
 
-  Future<ResponseWrapper> post(
+  Future<ResponseWrapper<dynamic>> postReq(
     String uri, {
-    dynamic data,
+    data,
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
@@ -74,16 +71,105 @@ class ApiClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     try {
-      final response = await _dio?.post(uri,
-          data: data,
-          queryParameters: queryParameters,
-          options: options,
-          cancelToken: cancelToken,
-          onReceiveProgress: onReceiveProgress,
-          onSendProgress: onSendProgress);
+      var response = await _dio?.post(
+        uri,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
       return _response(response);
-    } on DioError catch (e) {
-      return _error(e);
+    } on SocketException catch (e) {
+      throw SocketException(e.toString());
+    } on FormatException catch (_) {
+      throw FormatException("Unable to process the data");
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<ResponseWrapper<dynamic>> patchReq(
+    String uri, {
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    try {
+      var response = await _dio?.patch(
+        uri,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
+      return _response(response);
+    } on SocketException catch (e) {
+      throw SocketException(e.toString());
+    } on FormatException catch (_) {
+      throw FormatException("Unable to process the data");
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<ResponseWrapper<dynamic>> putReq(
+    String uri, {
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    try {
+      var response = await _dio?.put(
+        uri,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
+      return _response(response);
+    } on SocketException catch (e) {
+      throw SocketException(e.toString());
+    } on FormatException catch (_) {
+      throw FormatException("Unable to process the data");
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<ResponseWrapper<dynamic>> deleteReq(
+    String uri, {
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
+    try {
+      var response = await _dio?.delete(
+        uri,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+      );
+      return _response(response);
+    } on SocketException catch (e) {
+      throw SocketException(e.toString());
+    } on FormatException catch (_) {
+      throw FormatException("Unable to process the data");
+    } catch (e) {
+      throw e;
     }
   }
 }
