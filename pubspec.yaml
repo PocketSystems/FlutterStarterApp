@@ -28,7 +28,6 @@ dependencies:
   stacked: ^2.1.8
   stacked_services: ^0.8.7
   get_it: ^7.1.4
-  observable_ish: ^3.0.0
   package_info: ^2.0.2
   dio: ^4.0.0
   flutter_keyboard_visibility: ^5.0.2

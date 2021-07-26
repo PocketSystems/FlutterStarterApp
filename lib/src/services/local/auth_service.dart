@@ -1,9 +1,8 @@
 import 'package:flutter_starter_app/src/models/user.dart';
-import 'package:observable_ish/observable_ish.dart';
 import 'package:stacked/stacked.dart';
 
 class AuthService with ReactiveServiceMixin {
-  RxValue<User?> _user = RxValue<User?>(null);
+  ReactiveValue<User?> _user = ReactiveValue<User?>(null);
   User? get user => _user.value;
 
   AuthService() {
