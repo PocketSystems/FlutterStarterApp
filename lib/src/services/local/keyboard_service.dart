@@ -1,9 +1,8 @@
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:observable_ish/observable_ish.dart';
 import 'package:stacked/stacked.dart';
 
 class KeyboardService with ReactiveServiceMixin {
-  RxValue<bool> _isKeyboardVisible = RxValue<bool>(false);
+  ReactiveValue<bool> _isKeyboardVisible = ReactiveValue<bool>(false);
   bool get isKeyboardVisible => _isKeyboardVisible.value;
 
   KeyboardService() {

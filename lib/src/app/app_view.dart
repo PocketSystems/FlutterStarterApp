@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_starter_app/src/base/utils/Constants.dart';
+import 'package:flutter_starter_app/src/base/utils/constants.dart';
 import 'package:flutter_starter_app/src/services/local/navigation_service.dart';
 import 'package:flutter_starter_app/src/views/splash/splash_view.dart';
 
