@@ -8,6 +8,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked/stacked_annotations.dart';
 
 import '../views/home/home_view.dart';
 import '../views/splash/splash_view.dart';
@@ -32,13 +33,13 @@ class StackedRouter extends RouterBase {
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, StackedRouteFactory>{
     SplashView: (data) {
-      return MaterialPageRoute<dynamic>(
+      return MaterialPageRoute<MaterialRoute<dynamic>>(
         builder: (context) => SplashView(),
         settings: data,
       );
     },
     HomeView: (data) {
-      return MaterialPageRoute<dynamic>(
+      return MaterialPageRoute<MaterialRoute<dynamic>>(
         builder: (context) => HomeView(),
         settings: data,
       );
