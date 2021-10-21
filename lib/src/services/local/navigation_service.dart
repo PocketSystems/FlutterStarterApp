@@ -10,11 +10,32 @@ class NavService {
   // key
   static GlobalKey<NavigatorState>? get key => StackedService.navigatorKey;
 
+  // key for nested navigator to be used in SplashView
+  static final _splashViewNavigatorId = 0;
+  static GlobalKey<NavigatorState>? get nestedNavKey =>
+      StackedService.nestedNavigationKey(_splashViewNavigatorId);
+
   // on generate route
   static Route<dynamic>? Function(RouteSettings) get onGenerateRoute =>
       StackedRouter().onGenerateRoute;
 
-  // routes with args
-  static Future<dynamic>? home({dynamic arguments}) => _navigationService!
-      .clearStackAndShow(Routes.homeView, arguments: arguments);
+  // on generate route
+  static Route<dynamic>? Function(RouteSettings, [String])
+      get onSplashViewGenerateRoute => SplashViewRouter().onGenerateRoute;
+
+  // nested routes with args for root navigator
+  static Future<dynamic>? spalsh({dynamic arguments}) => _navigationService!
+      .clearStackAndShow(Routes.splashView, arguments: arguments);
+
+  static Future<dynamic>? dashboard({dynamic arguments}) => _navigationService!
+      .navigateTo(Routes.dashboardView, arguments: arguments);
+
+  // nested routes in SplashView with args
+  static Future<dynamic>? home({dynamic arguments}) =>
+      _navigationService!.clearStackAndShow(SplashViewRoutes.homeView,
+          arguments: arguments, id: _splashViewNavigatorId);
+
+  static Future<dynamic>? about({dynamic arguments}) =>
+      _navigationService!.navigateTo(SplashViewRoutes.aboutView,
+          arguments: arguments, id: _splashViewNavigatorId);
 }

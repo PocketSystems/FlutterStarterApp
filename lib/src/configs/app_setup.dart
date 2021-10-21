@@ -2,6 +2,8 @@ import 'package:flutter_starter_app/src/services/local/auth_service.dart';
 import 'package:flutter_starter_app/src/services/local/connectivity_service.dart';
 import 'package:flutter_starter_app/src/services/local/keyboard_service.dart';
 import 'package:flutter_starter_app/src/services/remote/api_service.dart';
+import 'package:flutter_starter_app/src/views/about/about_view.dart';
+import 'package:flutter_starter_app/src/views/dashboard/dashboard_view.dart';
 import 'package:flutter_starter_app/src/views/home/home_view.dart';
 import 'package:flutter_starter_app/src/views/splash/splash_view.dart';
 import 'package:stacked/stacked_annotations.dart';
@@ -9,8 +11,11 @@ import 'package:stacked_services/stacked_services.dart';
 
 @StackedApp(
   routes: [
-    MaterialRoute(page: SplashView, initial: true),
-    MaterialRoute(page: HomeView),
+    MaterialRoute(page: SplashView, initial: true, children: [
+      MaterialRoute(page: HomeView, initial: true),
+      MaterialRoute(page: AboutView),
+    ]),
+    MaterialRoute(page: DashboardView)
   ],
   dependencies: [
     // Lazy singletons
