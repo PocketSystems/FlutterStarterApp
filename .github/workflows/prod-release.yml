@@ -1,4 +1,4 @@
-name: CD Production-Lane
+name: CD Dev-Lane
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch.
 
@@ -11,8 +11,7 @@ name: CD Production-Lane
 # MAIL_USERNAME : A mailer email username to send email from 
 # MAIL_PASSWORD : Email password to send email from (For Google mail servers, we need app-specific password : https://myaccount.google.com/apppasswords)
 # MAIL_TO : Recipients of the generated build release 
-# PLAYSTORE_ACCOUNT_KEY : google-services.json file string for playstore release manager / owner api : https://developers.google.com/android-publisher/getting_started
-
+# APP_PACKAGE_NAME : Package name of the app (com.example.some.app)
 
 on:
   push:
@@ -24,18 +23,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      
       - name: Read pubspec.yaml Version
         uses: KJ002/read-yaml@1.5
         id: pubspec-data
         with:
           file: 'pubspec.yaml'
           key-path: '["version"]'
+
       - name: Generate unique Release Tag
         run: echo RELEASE_TAG=Release-${{ steps.pubspec-data.outputs.data }}-$(date +%s) >> $GITHUB_ENV
+
+      - name: Set flavor string
+        run: echo APP_FLAVOR=prod >> $GITHUB_ENV
+
       - name: Setup Java
         uses: actions/setup-java@v1
         with:
           java-version: "8.x"
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
@@ -43,21 +49,21 @@ jobs:
           channel: 'dev'
           
       - name: Decode android/key.properties
-        run: echo "${{ secrets.KEY_PROPERTIES_PROD }}" | base64 --decode > android/key.properties
+        run: echo "${{ secrets.KEY_PROPERTIES_BASE64 }}" | base64 --decode > android/key.properties
 
       - name: Decode android/neumodore_key.jks
-        run: echo "${{ secrets.KEYSTORE_JKS_PROD }}" | base64 --decode > android/key.jks
+        run: echo "${{ secrets.KEYSTORE_JKS_BASE64 }}" | base64 --decode > android/key.jks
       
       - name: Pub Get Packages
         run: flutter pub get
 
       - name: Build APPBUNDLE
-        run: flutter build appbundle --release --flavor prod -t lib/main_prod.dart && flutter build apk --release --flavor prod -t lib/main_prod.dart
+        run: flutter build appbundle --release --flavor ${{env.APP_FLAVOR}} -t lib/main_${{env.APP_FLAVOR}}.dart && flutter build apk --release --flavor ${{env.APP_FLAVOR}} -t lib/main_${{env.APP_FLAVOR}}.dart
 
       - name: Create Github Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/bundle/prodRelease/*.aab,build/app/outputs/flutter-apk/app-prod-release.apk"
+          artifacts: "build/app/outputs/bundle/${{env.APP_FLAVOR}}Release/*.aab,build/app/outputs/flutter-apk/app-${{env.APP_FLAVOR}}-release.apk"
           token: ${{ secrets.GH_TOKEN }}
           tag: "${{env.RELEASE_TAG}}"
           body: "${{ github.event.head_commit.message }}"
@@ -66,7 +72,14 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: APPBUNDLE
-          path: build/app/outputs/bundle/release/app-release.aab
+          path: build/app/outputs/bundle/${{env.APP_FLAVOR}}Release/app-${{env.APP_FLAVOR}}-release.aab
+
+
+      - name: Save APK to Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: APK
+          path: build/app/outputs/flutter-apk/app-${{env.APP_FLAVOR}}-release.apk
 
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
@@ -108,8 +121,8 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
-          packageName: com.flutter.cicd.test
-          releaseFiles: app-release.aab
+          packageName: ${{ secrets.APP_PACKAGE_NAME }}
+          releaseFiles: app-${{env.APP_FLAVOR}}-release.aab
           track: production
           whatsNewDirectory: distribution/whatsnew
           status: draft
