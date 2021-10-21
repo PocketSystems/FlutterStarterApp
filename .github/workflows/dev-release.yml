@@ -100,7 +100,7 @@ jobs:
           # Optional whether this connection use TLS (default is true if server_port is 465)
           secure: true
           # Optional plain body:
-          body: "Build job of ${{github.repository}} completed successfully! Download the APK for ${{env.RELEASE_TAG}} \nhttps://github.com/${{github.repository}}/releases/download/${{env.RELEASE_TAG}}/app-release.apk"
+          body: "Build job of ${{github.repository}} completed successfully! Download the APK for ${{env.RELEASE_TAG}} \nhttps://github.com/${{github.repository}}/releases/download/${{env.RELEASE_TAG}}/app-${{env.APP_FLAVOR}}-release.apk"
           # Optional unsigned/invalid certificates allowance:
           ignore_cert: true
           #attachments: build/app/outputs/flutter-apk/app-release.apk
