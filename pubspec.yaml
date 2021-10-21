@@ -18,16 +18,14 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.14.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   connectivity: ^3.0.6
-  cupertino_icons: ^1.0.3
   stacked: ^2.2.5
   stacked_services: ^0.8.13
-  get_it: ^7.2.0
   package_info: ^2.0.2
   dio: ^4.0.0
   flutter_keyboard_visibility: ^5.0.3
