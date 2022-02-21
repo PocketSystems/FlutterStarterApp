@@ -11,10 +11,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 @StackedApp(
   routes: [
-    MaterialRoute(page: SplashView, initial: true, children: [
-      MaterialRoute(page: HomeView, initial: true),
-      MaterialRoute(page: AboutView),
-    ]),
+    MaterialRoute(page: SplashView, initial: true),
     MaterialRoute(page: DashboardView)
   ],
   dependencies: [
