@@ -14,6 +14,13 @@ class AppView extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       onGenerateRoute: NavService.onGenerateRoute,
       navigatorKey: NavService.key,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(
+
+        ),
+        fontFamily: ''
+      ),
       home: SplashView(),
       builder: (context, child) {
         return Stack(
